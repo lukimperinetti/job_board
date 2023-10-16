@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Jobs from "./pages/Jobs";
 import Ads from "./pages/Ads";
 import CreateAd from "./pages/CreateAd";
+import UserProfile from "./pages/UserProfile";
 // import SelectedJob from "./pages/Ads";
 //components import
 import NavBar from "./components/Navbar";
@@ -30,6 +31,7 @@ function App() {
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/jobs/:jobId" element={<Ads />} />
               <Route path="/profil/createad/:id" element={<CreateAd />} />
+              <Route path="/profil/:id" element={<UserProfile />} />
             </Routes>
           </div>
         </BrowserRouter>
