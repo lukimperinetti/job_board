@@ -7,6 +7,7 @@ import Ads from "./pages/Ads";
 // import SelectedJob from "./pages/Ads";
 //components import
 import NavBar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             </Routes>
           </div>
         </BrowserRouter>
+        <Footer/>
       </div>
     </>
   );
