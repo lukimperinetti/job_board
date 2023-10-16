@@ -59,6 +59,7 @@ header a {
   /* margin-bottom: 30px; */
 }
 .contactezNousBtt,
+.authBtn,
 .commencerBtt,
 .overlay__btn {
   box-shadow: 3px 4px 0px 0px #899599;
@@ -74,7 +75,7 @@ header a {
   text-decoration: none;
   text-shadow: 0px 1px 0px #e1e2ed;
 }
-.contactezNousBtt {
+.contactezNousBtt, .authBtn {
   margin-right: 40px;
 }
 .commencerBtt {
@@ -86,6 +87,7 @@ header a {
   margin-left: 200px;
 }
 .contactezNousBtt:hover,
+.authBtn:hover,
 .commencerBtt:hover,
 .overlay__btn:hover {
   background-color: transparent;
@@ -93,6 +95,7 @@ header a {
   cursor: pointer;
 }
 .contactezNousBtt:active,
+.authBtn:active,
 .commencerBtt:active,
 .overlay__btn:active {
   position: relative;
