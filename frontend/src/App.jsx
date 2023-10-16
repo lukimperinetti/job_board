@@ -4,11 +4,11 @@ import { Helmet } from "react-helmet";
 import Home from "./pages/Home";
 import Jobs from "./pages/Jobs";
 import Ads from "./pages/Ads";
+import CreateAd from "./pages/CreateAd";
 // import SelectedJob from "./pages/Ads";
 //components import
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
-
 
 function App() {
   return (
@@ -29,10 +29,11 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/jobs/:jobId" element={<Ads />} />
+              <Route path="/profil/createad/:id" element={<CreateAd />} />
             </Routes>
           </div>
         </BrowserRouter>
-        <Footer/>
+        <Footer />
       </div>
     </>
   );
