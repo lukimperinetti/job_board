@@ -4,9 +4,12 @@ import { Helmet } from "react-helmet";
 import Home from "./pages/Home";
 import Jobs from "./pages/Jobs";
 import Ads from "./pages/Ads";
+import Login from "./pages/Login";
+import SignUp from "./pages/signUp";
 // import SelectedJob from "./pages/Ads";
 //components import
 import NavBar from "./components/Navbar";
+
 
 
 function App() {
@@ -28,6 +31,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/jobs/:jobId" element={<Ads />} />
+              <Route path="/jobs/login" element={<Login />} />
+              <Route path="/jobs/signUp" element={<SignUp />} />
             </Routes>
           </div>
         </BrowserRouter>

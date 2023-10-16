@@ -416,3 +416,229 @@ a {
     margin-bottom: 1rem;
   }
 }
+ /* Login page */
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap");
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  --darkBlue: rgb(59, 52, 163);
+  --blue: rgb(82, 72, 224);
+  --grey: #ccc;
+  --white: #fff;
+}
+
+/* body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.7;
+  color: #777;
+  font-weight: 400;
+  padding: 1rem;
+  background: linear-gradient(
+    145deg,
+    var(--white) 40%,
+    var(--blue) 45%,
+    var(--white) 45%
+  );
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+.box1,
+.box2 {
+  max-width: 40rem;
+  width: 100%;
+  height: 900px;
+  position: relative;
+  background-color: transparent;
+  height: 60rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s;
+  margin-left: 550px;
+}
+.box2{
+  width: 400px;
+}
+.forms {
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 15px;
+  perspective: 200rem;
+  max-height: 535px;
+  height: 100%;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all 4s;
+}
+.forms h2 {
+  margin-bottom: 1.4rem;
+  font-weight: 700;
+  font-size: 2.6rem;
+  letter-spacing: 1.5px;
+  color: #333;
+  position: relative;
+}
+.forms h2::before {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 2%;
+  width: calc(10%);
+  height: 5px;
+  /* width: 100%; */
+  /* transform: translateX(-50%); */
+  background-color: var(--blue);
+  transition: all 0.5s;
+}
+.forms:hover h2::before {
+  background-color: var(--blue);
+  width: 20%;
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.8rem;
+}
+
+.log__box {
+  position: relative;
+  height: 5rem;
+  width: 100%;
+}
+.input-style {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0 3rem;
+  font-size: 1.2rem;
+  color: var(--grey);
+  border-bottom: 2px solid var(--grey);
+  /* position: absolute; */
+  transition: all 0.3s;
+}
+form .i {
+  font-size: 2.2rem;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: var(--grey);
+}
+form .eye {
+  font-size: 2.2rem;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: var(--grey);
+  padding: 1rem;
+  cursor: pointer;
+}
+.log__box input:is(:focus, :valid) {
+  border-bottom-color: var(--blue);
+  font-size: 1.6rem;
+  color: #777;
+}
+
+.log__box input:is(:focus, :valid) ~ .i {
+  color: var(--blue);
+}
+.log__remember label {
+  font-size: 1.2rem;
+}
+.log__remember {
+  margin-top: -1rem;
+  height: fit-content;
+}
+form button {
+  width: 100%;
+  height: 5rem;
+  border-radius: 10px;
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.5rem);
+  transition: all 0.3s;
+}
+.form__text {
+  font-size: 10px;
+  display: flex;
+  gap: 0.5rem;
+  color: #010101;
+}
+.form__text a {
+  text-decoration: none;
+  color: var(--blue);
+}
+input {
+  border: none;
+  outline: none;
+}
+
+.form__signUp {
+  transform: rotateY(-180deg);
+}
+
+.form__login form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+input:invalid {
+  color: red;
+}
+input:invalid:focus {
+  border-bottom: 2px solid red;
+}
+small {
+  font-size: 1rem !important;
+  position: absolute;
+  bottom: -40%;
+  width: 100%;
+  left: 0;
+  opacity: 0;
+}
+.error {
+  opacity: 1 !important;
+  color: red;
+}
+button:active {
+  background-color: var(--darkBlue);
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+input {
+  font-family: "Poppins", sans-serif;
+}
+input[type="checkbox"] {
+  accent-color: var(--blue);
+
+}
+input[type="checkbox"]:checked {
+  outline: 3px solid var(--blue);
+  outline-offset: 1px;
+}
+/* .form__signUp.flipped {
+  transform: rotateY('180deg');
+} */
