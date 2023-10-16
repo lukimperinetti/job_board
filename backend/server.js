@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 //import routes
 const jobRoutes = require("./routes/jobs");
 const userRoutes = require("./routes/users");
+const applyRoutes = require("./routes/apply");
 
 const app = express(); //express app
 
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 // All routes
 app.use("/api/jobs", jobRoutes); //routes for jobs
 app.use("/api/users", userRoutes); //routes for jobs
+app.use("/api/apply", applyRoutes); //routes for jobs
 
 mongoose
   .connect(process.env.MONGO_URI) //connect to database
