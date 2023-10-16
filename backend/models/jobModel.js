@@ -25,7 +25,7 @@ const jobSchema = new Schema({
     },
     Booster:{
         type: Boolean,
-        required: true
+        required: false
     }
 },{ timestamps: true})    //associated timestamp information indicating when it was created or last updated
 

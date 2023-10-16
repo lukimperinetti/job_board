@@ -50,10 +50,7 @@ const Footer = () => {
               <h6 className="ftr-hdr">A propos de nous</h6>
               <ul className="ftr-links-sub">
                 <li>
-                  <a
-                    href="#"
-                    rel="nofollow"
-                  >
+                  <a href="#" rel="nofollow">
                     Notre entreprise
                   </a>
                 </li>
@@ -72,21 +69,16 @@ const Footer = () => {
             <div className="footer-list-wrap">
               <h6 className="ftr-hdr">Mon compte</h6>
               <ul className="ftr-links-sub">
-                <art:content rule="!loggedin">
-                  <li className="ftr-Login">
-                    <span className="link login-trigger">
-                      Accéder à mon compte
-                    </span>
-                  </li>
-                  <li>
-                    <span
-                      className="link"
-                      onclick="link('#')"
-                    >
-                      mes annonces
-                    </span>
-                  </li>
-                </art:content>
+                <li className="ftr-Login">
+                  <span className="link login-trigger">
+                    Accéder à mon compte
+                  </span>
+                </li>
+                <li>
+                  <span className="link" onClick="link('#')">
+                    mes annonces
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
@@ -95,11 +87,7 @@ const Footer = () => {
               Soyez notifié des dernières offres d'emplois !
             </h6>
             <div id="ftr-email" className="ftr-email-form">
-              <form
-                id="ftrEmailForm"
-                method="post"
-                action="#"
-              >
+              <form id="ftrEmailForm" method="post" action="#">
                 <div className="error">Entreez un email valide</div>
                 <input
                   type="text"
