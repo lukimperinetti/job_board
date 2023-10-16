@@ -8,7 +8,7 @@ const Navbar = () => {
                 <Link to="/" className="logo">
                     <img src={LogoML} alt="logo" className='logoMl' />  
                 </Link>
-                <button className="contactezNousBtt">Contacter-nous</button>
+                <button className="authBtn">Connexion/Inscription</button>
             </div>
         </header>
     )
