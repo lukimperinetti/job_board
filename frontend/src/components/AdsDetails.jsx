@@ -3,21 +3,8 @@ import { useEffect, useState } from "react";
 import ML_aprouved from "../assets/ml_aprouved.png";
 
 const AdsDetails = ({ ads }) => {
-  // reccup de l id
-  // const [clickedId, setClickedId] = useState(null); // on créer un state
-
-  //   const handleButtonClick = (event) => {
-  //     const elementId = event.target.getAttribute('id'); // on reccupère l'id au click
-  // setClickedId(elementId);// on le stock dans le state
-  //     console.log(ad._id);
-  //   };
   return (
     <div classNameName="job-details">
-      {/* <h4>{job.Title}</h4>
-            <p><strong>Déscription du post :</strong> {job.Description}</p> */}
-
-      {/* <canvas className="orb-canvas"></canvas> */}
-
       <div
         className="overlay"
         style={{ paddingBottom: "100px", paddingTop: "100px" }}
