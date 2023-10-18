@@ -30,4 +30,3 @@ const jobSchema = new Schema({
 },{ timestamps: true})    //associated timestamp information indicating when it was created or last updated
 
 module.exports = mongoose.model('job', jobSchema)
-

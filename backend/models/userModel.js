@@ -14,7 +14,7 @@ const userSchema = new Schema(
     },
     address: {
       type: String,
-      required: true,
+      required: false,
     },
     email: {
       type: String,
@@ -30,7 +30,7 @@ const userSchema = new Schema(
     },
     flag: {
       type: Number,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }

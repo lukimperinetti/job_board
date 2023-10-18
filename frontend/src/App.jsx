@@ -31,8 +31,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/jobs/:jobId" element={<Ads />} />
-              <Route path="/jobs/login" element={<Login />} />
-              <Route path="/jobs/signUp" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signUp" element={<SignUp />} />
             </Routes>
           </div>
         </BrowserRouter>

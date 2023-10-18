@@ -1,53 +1,85 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-// import { useRef } from "react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
-  // const boxLoginFormRef = useRef(null);
-  // const boxSignupFormRef = useRef(null);
-  // const passShowHideRefs = useRef([]);
+  const [formData, setFormData] = useState({
+    loginEmail: '',
+    loginPassword: '',
+  });
 
-  // const handleSignupClick = (e) => {
-  //   e.preventDefault();
-  //   boxLoginFormRef.current.style.transform = "rotateY(180deg)";
-  //   boxSignupFormRef.current.style.transform = "rotateY(0deg)";
-  // };
+  const [loginError, setLoginError] = useState(''); // État pour gérer les erreurs de connexion
+  const navigate = useNavigate();
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    if (name === 'loginEmail' || name === 'loginPassword') {
+      setLoginError('');
+    }
+  };
 
-  // const handleLoginClick = (e) => {
-  //   e.preventDefault();
-  //   boxLoginFormRef.current.style.transform = "rotateY(0deg)";
-  //   boxSignupFormRef.current.style.transform = "rotateY(-180deg)";
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  // const handlePassShowHideClick = (eye) => {
-  //   const parentEl = eye.parentElement;
-  //   const passinput = parentEl.querySelector("input");
-  //   if (passinput.type === "password") {
-  //     passinput.type = "text";
-  //     eye.name = "eye-outline";
-  //   } else {
-  //     passinput.type = "password";
-  //     eye.name = "eye-off-outline";
-  //   }
-  // };
+    // Données à envoyer à l'API
+    const data = {
+      email: formData.loginEmail,
+      password: formData.loginPassword,
+    };
+
+    // Effectuer une requête Axios pour se connecter
+    axios
+      .post('http://localhost:3000/api/users/login', data)
+      .then((response) => {
+        if (response.data.success) {
+          const token = response.data.token;
+          localStorage.setItem('token', token);
+          console.log('Connexion réussie :', response.data);
+          // Redirigez l'utilisateur vers la page d'accueil ou toute autre page après la connexion
+          if (localStorage.getItem('token')) {
+            // Rediriger l'utilisateur vers la page /jobs
+            navigate('/jobs');
+          }
+        
+        } else {
+          setLoginError('Les informations de connexion sont incorrectes. Veuillez réessayer.');
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          setLoginError('Les informations de connexion sont incorrectes. Veuillez réessayer.');
+        } else {
+          console.error('Erreur de configuration de la requête:', error.message);
+        }
+      });
+
+      //if token in localstorage -> redirige sur /jobs 
+
+  };
+
   return (
-    <div className="box1">
-      <div className="forms form__login" style={{ width: "350px" }}>
+    <div className="box2">
+      <div className="forms form__login" style={{ width: '450px' }}>
         <h2>Login</h2>
-        <form className="form1" id="loginForm">
+
+        <form className="form2" id="loginForm" style={{ height: '300px' }} onSubmit={handleSubmit}>
           <div className="log__email log__box">
             <input
               type="email"
               className="login__email input-style"
-              placeholder="email@gmail.com"
-              id="loginEmail"
-              style={{}}
+              placeholder="Email Address"
+              onChange={handleChange}
               required
+              id="loginEmail"
+              name="loginEmail"
             />
             <ion-icon className="i" name="mail-outline"></ion-icon>
-            <small className="form__login-email--error" id="loginEmailErr">
-              error message
-            </small>
           </div>
           <div className="log__pass log__box">
             <input
@@ -56,43 +88,42 @@ const Login = () => {
               placeholder="Password"
               required
               id="loginPassword"
+              name="loginPassword"
+              onChange={handleChange}
             />
             <ion-icon className="i" name="lock-closed-outline"></ion-icon>
-            <ion-icon className="eye showHide" name="eye-off-outline"></ion-icon>
-            <small className="form__login-pass--error" id="loginPassErr">
-              error message
-            </small>
           </div>
-          <div className="log__remember log__box">
-            <input
-              type="checkbox"
-              className="log__remember--input"
-              id="loginRemember"
-            />
-            <label htmlFor="log--remember" style={{ color: "black" }}>Remember me</label>
-            <small className="form__login-remember--error" id="loginRememberErr">
-              error message
-            </small>
-          </div>
+          {loginError && (
+            <div className="error-message" style={{ color: 'red', fontSize: '12px' }}>
+              {loginError}
+            </div>
+          )}
+          {/* {token && (
+            <Link to="/">
+              <button className="login-btn" type="submit" id="loginBtn">
+                Login
+              </button>
+            </Link>
+          )} */}
 
-          <button className="login-btn" type="submit" id="loginSubmit">
-            Login Now
-          </button>
-
+          <button className="login-btn" type="submit" id="loginBtn">
+            Login
+          </button> 
           <div className="form__text">
-            <p style={{ width: "200px" }}>not a member ?</p>
-            <Link to="/jobs/signUp">
-              <a className="form__sign--up" href="">
-                sign up
+            <p style={{ width: '300px' }}>
+              {' '}
+              <strong>Don't have an account?</strong>
+            </p>
+            <Link to="/signup">
+              <a className="form__signup--link">
+                <strong>Sign Up Now</strong>
               </a>
             </Link>
           </div>
         </form>
       </div>
-
     </div>
   );
 };
 
 export default Login;
-
