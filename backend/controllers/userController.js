@@ -2,7 +2,7 @@ const userModel = require("../models/userModel");
 const user = require("../models/userModel");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 //get all users
 const getAllUsers = async (req, res) => {
@@ -98,7 +98,9 @@ const login = async (req, res) => {
     const user = await userModel.findOne({ email });
 
     if (!user) {
-      return res.status(401).json({ success: false, message: "L'utilisateur n'existe pas." });
+      return res
+        .status(401)
+        .json({ success: false, message: "L'utilisateur n'existe pas." });
     }
 
     if (await bcrypt.compare(password, user.password)) {
@@ -108,16 +110,25 @@ const login = async (req, res) => {
         email: user.email,
         password: user.password,
       };
-      
-      const secretKey = '20'; // 
-      const token = jwt.sign(userAuth, secretKey, { expiresIn: '2h' });
-      return res.status(200).json({ success: true, message: "Connexion réussie", token });
+
+      const secretKey = "20"; //
+      const token = jwt.sign(userAuth, secretKey, { expiresIn: "2h" });
+      return res
+        .status(200)
+        .json({ success: true, message: "Connexion réussie", token });
     } else {
       // Mot de passe incorrect
-      return res.status(401).json({ success: false, message: "Mot de passe incorrect." });
+      return res
+        .status(401)
+        .json({ success: false, message: "Mot de passe incorrect." });
     }
   } catch (error) {
-    res.status(500).json({ success: false, message: "Une erreur s'est produite lors de la connexion." });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Une erreur s'est produite lors de la connexion.",
+      });
   }
 };
 

@@ -2,38 +2,30 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const jobApplySchema = new Schema(
   {
-    firstname: {
+    jobId: {
       type: String,
       required: true,
     },
-    lastname: {
+    userId: {
       type: String,
       required: true,
     },
-    address: {
-      type: String,
+    applied: {
+      type: Boolean,
       required: false,
     },
-    email: {
-      type: String,
-      required: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    cv: {
-      type: String,
+    stored: {
+      type: Boolean,
       required: false,
     },
-    flag: {
-      type: Number,
+    seen: {
+      type: Boolean,
       required: false,
     },
   },
   { timestamps: true }
 ); //associated timestamp information indicating when it was created or last updated
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("jobApply", jobApplySchema);

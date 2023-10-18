@@ -1,7 +1,14 @@
 const express = require("express");
 const res = require("express/lib/response");
 const router = express.Router();
-const { createUser, getAllUsers, getSingleUser, deleteUser, updateUser, login } = require("../controllers/userController");
+const {
+  createUser,
+  getAllUsers,
+  getSingleUser,
+  deleteUser,
+  updateUser,
+  login,
+} = require("../controllers/userController");
 
 router.get("/", getAllUsers);
 

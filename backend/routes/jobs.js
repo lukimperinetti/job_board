@@ -1,7 +1,13 @@
 const express = require("express");
 const res = require("express/lib/response");
 const router = express.Router();
-const { createJob, getAllJobs, getSingleJob, deleteJob, updateJob } = require("../controllers/jobController");
+const {
+  createJob,
+  getAllJobs,
+  getSingleJob,
+  deleteJob,
+  updateJob,
+} = require("../controllers/jobController");
 
 router.get("/", getAllJobs);
 
