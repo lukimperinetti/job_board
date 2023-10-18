@@ -53,6 +53,13 @@ const UserProfile = () => {
           <button className="overlay__btn">
             <span>Modifier</span>
           </button>
+          {userData.flag === 2 && (
+            <a href={`/dashboard?flag=2&id=${userData._id}`}>
+              <button className="overlay__btn">
+                <span>AdminBoard</span>
+              </button>
+            </a>
+          )}
         </div>
       </div>
     </div>
