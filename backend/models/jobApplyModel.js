@@ -8,22 +8,43 @@ const jobApplySchema = new Schema(
       type: String,
       required: true,
     },
-    userId: {
+    motivation:{
       type: String,
       required: true,
     },
-    applied: {
-      type: Boolean,
+    firstname: {
+      type: String,
+      required: true,
+    },
+    lastname: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    cv: {
+      type: String,
       required: false,
     },
-    stored: {
-      type: Boolean,
+    phoneNumber: {
+      type: String,
       required: false,
     },
-    seen: {
-      type: Boolean,
-      required: false,
-    },
+
+    // applied: {
+    //   type: Boolean,
+    //   required: false,
+    // },
+    // stored: {
+    //   type: Boolean,
+    //   required: false,
+    // },
+    // seen: {
+    //   type: Boolean,
+    //   required: false,
+    // },
   },
   { timestamps: true }
 ); //associated timestamp information indicating when it was created or last updated

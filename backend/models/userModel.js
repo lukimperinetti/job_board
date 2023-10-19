@@ -32,6 +32,11 @@ const userSchema = new Schema(
       type: Number,
       required: false,
     },
+    phoneNumber: {
+      type: String,
+      required: false,
+    },
+
   },
   { timestamps: true }
 ); //associated timestamp information indicating when it was created or last updated

@@ -24,7 +24,6 @@ const JobsDetails = ({ job }) => {
                 Voir plus
               </button>
             </Link>
-            <p>id = {job._id}</p>
           </div>
         </div>
       </div>

@@ -27,14 +27,19 @@ const getSingleApply = async (req, res) => {
 
 // create a new apply
 const createApply = async (req, res) => {
-  const { jobId, userId, applied, stored, seen } = req.body;
+  const { jobId, motivation, firstname, lastname, email, cv, phoneNumber } = req.body;
   try {
     const ap = await apply.create({
       jobId,
-      userId,
-      applied,
-      stored,
-      seen,
+      motivation,
+      firstname,
+      lastname,
+      email,
+      cv,
+      phoneNumber,
+      // applied,
+      // stored,
+      // seen,
     });
     res.status(200).json(ap);
   } catch (error) {

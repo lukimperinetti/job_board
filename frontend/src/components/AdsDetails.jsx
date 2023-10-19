@@ -4,7 +4,7 @@ import ML_aprouved from "../assets/ml_aprouved.png";
 
 const AdsDetails = ({ ads }) => {
   return (
-    <div classNameName="job-details">
+    <div className="job-details">
       <div
         className="overlay"
         style={{ paddingBottom: "100px", paddingTop: "100px" }}
@@ -25,10 +25,11 @@ const AdsDetails = ({ ads }) => {
             {ads.Localisation}
             {/* {ads.Bosster &&  <img src={ML_aprouved} alt="ad aprouved" className='mlAprouved' />}; */}
           </p>
-          <button className="overlay__btn">
-            <span>Postuler</span>
-            <span className="overlay__btn-emoji">:)</span>
-          </button>
+
+          <Link to={`/apply/${ads._id}`}>
+            <button className="overlay__btn">Postuler :)</button>
+          </Link>
+
         </div>
       </div>
     </div>
