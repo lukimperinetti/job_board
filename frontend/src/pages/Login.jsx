@@ -32,27 +32,24 @@ const Login = () => {
       password: formData.loginPassword,
     };
 
-    // Effectuer une requête Axios pour se connecter
     axios
-  .post("http://localhost:3000/api/users/login", data)
-  .then((response) => {
-    if (response.data.success) {
-      const token = response.data.token;
-      const userId = response.data.userId; // Supposons que l'API renvoie l'ID de l'utilisateur
-      localStorage.setItem("token", token);
-      localStorage.setItem("userId", userId); // Stockez l'ID de l'utilisateur dans le local storage
-      console.log("Connexion réussie :", response.data);
-      // Redirigez l'utilisateur vers la page d'accueil ou toute autre page après la connexion
-      if (localStorage.getItem("token")) {
-        // Rediriger l'utilisateur vers la page /jobs
-        navigate("/jobs");
-      }
-    } else {
-      setLoginError(
-        "Les informations de connexion sont incorrectes. Veuillez réessayer."
-      );
-    }
-  })
+      .post("http://localhost:3000/api/users/login", data)
+      .then((response) => {
+        if (response.data.success) {
+          const token = response.data.token;
+          const userId = response.data.userId;
+          localStorage.setItem("token", token);
+          localStorage.setItem("userId", userId);
+          console.log("Connexion réussie :", response.data);
+          if (localStorage.getItem("token")) {
+            window.location.href = "/jobs";
+          }
+        } else {
+          setLoginError(
+            "Les informations de connexion sont incorrectes. Veuillez réessayer."
+          );
+        }
+      })
       .catch((error) => {
         if (error.response) {
           setLoginError(
@@ -65,8 +62,6 @@ const Login = () => {
           );
         }
       });
-
-    //if token in localstorage -> redirige sur /jobs
   };
 
   return (
@@ -112,14 +107,6 @@ const Login = () => {
               {loginError}
             </div>
           )}
-          {/* {token && (
-            <Link to="/">
-              <button className="login-btn" type="submit" id="loginBtn">
-                Login
-              </button>
-            </Link>
-          )} */}
-
           <button className="login-btn" type="submit" id="loginBtn">
             Login
           </button>

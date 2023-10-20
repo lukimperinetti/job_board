@@ -42,6 +42,7 @@ const SignUP = () => {
         .post("http://localhost:3000/api/users/newUser", data)
         .then((response) => {
           console.log("Données enregistrées avec succès :", response.data);
+          window.location.href = "/login";
         })
         .catch((error) => {
           if (error.response) {
@@ -162,7 +163,7 @@ const SignUP = () => {
               {" "}
               <strong>already have an Account ?</strong>
             </p>
-            <Link to="/jobs/login">
+            <Link to="/login">
               <a className="form__login--link">
                 <strong>Login Now</strong>
               </a>
