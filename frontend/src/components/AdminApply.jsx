@@ -1,40 +1,42 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const AdminUser = () => {
-  const [users, setUsers] = useState(null);
+const AdminApply = () => {
+  const [applys, setApplys] = useState(null);
   const [error, setError] = useState(null);
-  const [editUser, setEditUser] = useState(null);
+  const [editApply, setEditApply] = useState(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/users")
+      .get("http://localhost:3000/api/apply")
       .then((response) => {
-        setUsers(response.data);
+        setApplys(response.data);
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des données :", error);
-        setError(error);
       });
   }, []);
 
-  const handlePatch = (user) => {
-    setEditUser(user);
+  const handlePatch = (apply) => {
+    setEditApply(apply);
   };
 
   const handleSave = () => {
-    console.log(editUser._id)
+    console.log(editApply._id);
     axios
-      .patch(`http://localhost:3000/api/users/${editUser._id}`, editUser)
+      .patch(`http://localhost:3000/api/apply/${editApply._id}`, editApply)
       .then(() => {
         console.log("Utilisateur modifié avec succès !");
         window.location.reload();
       })
       .catch((error) => {
-        console.error("Erreur lors de la modification de l'utilisateur :", error);
+        console.error(
+          "Erreur lors de la modification de l'utilisateur :",
+          error
+        );
         setError(error);
       });
-    setEditUser(null);
+      setEditApply(null);
   };
 
   const handleInputChange = (event) => {
@@ -42,21 +44,19 @@ const AdminUser = () => {
     const value = target.value;
     const name = target.name;
 
-    setEditUser({ ...editUser, [name]: value });
+    setEditApply({ ...editApply, [name]: value });
   };
 
   const handleDelete = (id) => {
-    if (
-      window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")
-    ) {
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer cette donnée ?")) {
       axios
-        .delete(`http://localhost:3000/api/users/${id}`)
+        .delete(`http://localhost:3000/api/apply/${id}`)
         .then(() => {
-          console.log("Utilisateur supprimé avec succès !");
+          console.log("Donnée supprimée avec succès !");
           window.location.reload();
         })
         .catch((error) => {
-          console.error("Erreur lors de la suppression de l'utilisateur :", error);
+          console.error("Erreur lors de la suppression de la donnée :", error);
           setError(error);
         });
     }
@@ -64,44 +64,44 @@ const AdminUser = () => {
 
   return (
     <div className="table_users">
-      <h2>Table Utilisateurs : {users && users.length} </h2>
+      <h2>Table Postulée : {applys && applys.length} </h2>
       {error && <p>Une erreur est survenue : {error.message}</p>}
-      {users && (
+      {applys && (
         <table>
           <thead>
             <tr>
               <th>ID</th>
+              <th>Annonce ID</th>
               <th>Prénom Nom</th>
-              <th>Adresse</th>
               <th>Email</th>
-              <th>Mot de passe</th>
-              {/* <th>CV</th> */}
-              <th>Flag</th>
+              <th>Téléphone</th>
+              <th>CV</th>
+              <th>motivation</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user._id}</td>
+            {applys.map((apply) => (
+              <tr key={apply._id}>
+                <td>{apply._id}</td>
+                <td>{apply.jobId}</td>
                 <td>
-                  {user.firstname} {user.lastname}
+                  {apply.firstname} {apply.lastname}
                 </td>
-                <td>{user.address}</td>
-                <td>{user.email}</td>
-                <td>{user.password}</td>
-                {/* <td>{user.cv}</td> */}
-                <td>{user.flag}</td>
+                <td>{apply.email}</td>
+                <td>{apply.phoneNumber}</td>
+                <td>{apply.cv}</td>
+                <td>{apply.motivation}</td>
                 <td>
                   <button
                     className="btn-modifier"
-                    onClick={() => handlePatch(user)}
+                    onClick={() => handlePatch(apply)}
                   >
                     Modifier
                   </button>
                   <button
                     className="btn-supprimer"
-                    onClick={() => handleDelete(user._id)}
+                    onClick={() => handleDelete(apply._id)}
                   >
                     Supprimer
                   </button>
@@ -111,44 +111,44 @@ const AdminUser = () => {
           </tbody>
         </table>
       )}
-      {editUser && (
+      {editApply && (
         <div className="modal">
           <div className="modal-content">
-          <h3 style={{ color: 'black' }}>Modifier l'utilisateur</h3>
+            <h3 style={{ color: "black" }}>Modifier l'annonce</h3>
             <form onSubmit={handleSave}>
-              <label style={{ color: 'black' }}>
+              <label style={{ color: "black" }}>
                 Prénom :
                 <input
                   type="text"
                   name="firstname"
-                  value={editUser.firstname}
+                  value={editApply.firstname}
                   onChange={handleInputChange}
                 />
               </label>
-              <label style={{ color: 'black' }}>
+              <label style={{ color: "black" }}>
                 Nom :
                 <input
                   type="text"
                   name="lastname"
-                  value={editUser.lastname}
+                  value={editApply.lastname}
                   onChange={handleInputChange}
                 />
               </label>
-              <label style={{ color: 'black' }}>
-                Adresse :
-                <input
-                  type="text"
-                  name="address"
-                  value={editUser.address}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label style={{ color: 'black' }}>
-                email :
+              <label style={{ color: "black" }}>
+                Email :
                 <input
                   type="text"
                   name="email"
-                  value={editUser.email}
+                  value={editApply.email}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label style={{ color: "black" }}>
+                Téléphone :
+                <input
+                  type="text"
+                  name="phoneNumber"
+                  value={editApply.phoneNumber}
                   onChange={handleInputChange}
                 />
               </label>
@@ -157,22 +157,22 @@ const AdminUser = () => {
                 <input
                   type="text"
                   name="password"
-                  value={editUser.password}
+                  value={editApply.password}
                   onChange={handleInputChange}
                 />
               </label> */}
-              <label style={{ color: 'black' }}>
-                Flag :
+              <label style={{ color: "black" }}>
+                Motivation :
                 <input
                   type="text"
-                  name="flag"
-                  value={editUser.flag}
+                  name="motivation"
+                  value={editApply.motivation}
                   onChange={handleInputChange}
                 />
               </label>
               <button type="submit">Enregistrer</button>
             </form>
-            <button onClick={() => setEditUser(null)}>Fermer</button>
+            <button onClick={() => setEditApply(null)}>Fermer</button>
           </div>
         </div>
       )}
@@ -198,8 +198,46 @@ const AdminUser = () => {
           width: 400px;
         }
       `}</style>
+      <style jsx>{`
+        .Ads {
+          margin: 20px;
+          background-color: #aaaaaa;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          background-color: #aaaaaa;
+        }
+        th,
+        td {
+          text-align: left;
+          padding: 8px;
+        }
+        th {
+          background-color: #4caf50;
+          color: white;
+        }
+        tr:nth-child(even) {
+          background-color: ##fffcf2;
+        }
+        .btn-modifier {
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 5px;
+          margin-right: 5px;
+        }
+        .btn-supprimer {
+          background-color: #f44336;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 5px;
+        }
+      `}</style>
     </div>
   );
 };
 
-export default AdminUser;
+export default AdminApply;

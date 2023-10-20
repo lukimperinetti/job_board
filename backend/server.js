@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  methods: 'GET, POST, PUT, DELETE',
+  methods: 'GET, POST, PATCH, DELETE',
   origin: 'http://localhost:5173', // Remplacez par l'URL de votre application React
 }));
 

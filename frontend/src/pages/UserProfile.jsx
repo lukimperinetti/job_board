@@ -24,6 +24,11 @@ const UserProfile = () => {
     }
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
+
   if (!userData) {
     return <div>Chargement en cours...</div>;
   }
@@ -60,6 +65,16 @@ const UserProfile = () => {
               </button>
             </a>
           )}
+          {userData.flag === 1 && (
+            <a href={`/profil/createad?flag=1&id=${userData._id}`}>
+              <button className="overlay__btn">
+                <span>Ajouter une annonce</span>
+              </button>
+            </a>
+          )}
+          <button className="overlay__btn" onClick={handleLogout}>
+            <span>Déconnexion</span>
+          </button>
         </div>
       </div>
     </div>

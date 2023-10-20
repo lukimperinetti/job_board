@@ -42,6 +42,7 @@ const SignUP = () => {
         .post("http://localhost:3000/api/users/newUser", data)
         .then((response) => {
           console.log("Données enregistrées avec succès :", response.data);
+          window.location.href = "/login";
         })
         .catch((error) => {
           if (error.response) {
