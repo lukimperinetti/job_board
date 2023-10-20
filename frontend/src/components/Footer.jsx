@@ -75,9 +75,10 @@ const Footer = () => {
                   </span>
                 </li>
                 <li>
-                  <span className="link" onClick="link('#')">
+                  <span className="link" onClick={() => window.location.href = '#'}>
                     mes annonces
                   </span>
+
                 </li>
               </ul>
             </div>

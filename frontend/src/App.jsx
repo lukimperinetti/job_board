@@ -8,6 +8,8 @@ import CreateAd from "./pages/CreateAd";
 import UserProfile from "./pages/UserProfile";
 import Login from "./pages/Login";
 import SignUp from "./pages/signUp";
+import Apply from "./pages/Apply";
+import ApplyUser from "./pages/ApplyUser";
 // import SelectedJob from "./pages/Ads";
 //components import
 import NavBar from "./components/Navbar";
@@ -36,6 +38,10 @@ function App() {
               <Route path="/profil" element={<UserProfile />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signUp" element={<SignUp />} />
+              <Route path="/apply/:id" element={<Apply />} />
+              <Route path="/applyUser/:id" element={<ApplyUser />} />
+
+
             </Routes>
           </div>
         </BrowserRouter>
