@@ -30,6 +30,7 @@ const userSchema = new Schema(
     },
     flag: {
       type: Number,
+      default: 0,
       required: false,
     },
     phoneNumber: {
