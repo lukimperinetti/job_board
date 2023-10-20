@@ -8,12 +8,9 @@ import CreateAd from "./pages/CreateAd";
 import UserProfile from "./pages/UserProfile";
 import Login from "./pages/Login";
 import SignUp from "./pages/signUp";
-<<<<<<< HEAD
 import Dashboard from "./pages/Dashboard";
-=======
 import Apply from "./pages/Apply";
 import ApplyUser from "./pages/ApplyUser";
->>>>>>> aa29965528f37744b31b9885ce1670c22f5ac7be
 // import SelectedJob from "./pages/Ads";
 //components import
 import NavBar from "./components/Navbar";
