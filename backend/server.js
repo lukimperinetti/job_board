@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 //import routes
 const jobRoutes = require("./routes/jobs");
@@ -21,6 +22,11 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+
+app.use(cors({
+  methods: 'GET, POST, PUT, DELETE',
+  origin: 'http://localhost:5173', // Remplacez par l'URL de votre application React
+}));
 
 // All routes
 app.use("/api/jobs", jobRoutes); //routes for jobs

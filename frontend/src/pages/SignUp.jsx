@@ -162,7 +162,7 @@ const SignUP = () => {
               {" "}
               <strong>already have an Account ?</strong>
             </p>
-            <Link to="/jobs/login">
+            <Link to="/login">
               <a className="form__login--link">
                 <strong>Login Now</strong>
               </a>
