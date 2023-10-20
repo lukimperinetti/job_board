@@ -5,7 +5,6 @@ const JobsDetails = ({ job }) => {
   const descriptionLimitee = job.Description.slice(0, limite);
   const handleButtonClick = (event) => {
     const elementId = event.target.getAttribute("id"); // on reccupère l'id au click
-    console.log(job._id);
   };
   return (
     <div className="job-details" id={job._id}>

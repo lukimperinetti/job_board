@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ML_aprouved from "../assets/ml_aprouved.png";
 
+
 const AdsDetails = ({ ads }) => {
+  const token = localStorage.getItem("token");
   return (
     <div className="job-details">
       <div
@@ -26,9 +28,15 @@ const AdsDetails = ({ ads }) => {
             {/* {ads.Bosster &&  <img src={ML_aprouved} alt="ad aprouved" className='mlAprouved' />}; */}
           </p>
 
-          <Link to={`/apply/${ads._id}`}>
-            <button className="overlay__btn">Postuler :)</button>
-          </Link>
+          {token ? (
+            <Link to={`/applyUser/${ads._id}`}> 
+              <button className="overlay__btn">Postuler :)</button>
+            </Link>
+          ) : (
+            <Link to={`/apply/${ads._id}`}>
+              <button className="overlay__btn">Postuler :)</button>
+            </Link>
+          )}
 
         </div>
       </div>
