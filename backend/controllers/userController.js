@@ -113,9 +113,10 @@ const login = async (req, res) => {
 
       const secretKey = "20"; //
       const token = jwt.sign(userAuth, secretKey, { expiresIn: "2h" });
+      const userId = user.id;
       return res
         .status(200)
-        .json({ success: true, message: "Connexion réussie", token });
+        .json({ success: true, message: "Connexion réussie", token, userId });
     } else {
       // Mot de passe incorrect
       return res

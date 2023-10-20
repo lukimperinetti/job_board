@@ -1,47 +1,43 @@
+import React, { useState } from 'react';
 import axios from "axios";
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-const SignUP = () => {
+const Apply = () => {
+  const { id } = useParams();
   const [formData, setFormData] = useState({
     UserFirstname: "",
     UserLastname: "",
-    signupEmail: "",
-    signupPassword: "",
-    signupConfirmPassword: "",
+    UserEmail: "",
+    UserPhoneNumber: "",
+    UserMotivation: "",
   });
-  const [passwordError, setPasswordError] = useState("");
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-    if (name === "signupPassword" || name === "signupConfirmPassword") {
-      setPasswordError("");
-    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (formData.signupPassword !== formData.signupConfirmPassword) {
-      setPasswordError("Les mots de passe ne correspondent pas");
-    } else {
       // Données à envoyer à l'API
       const data = {
-        firstname: formData.UserFirstname, 
+        firstname: formData.UserFirstname,
         lastname: formData.UserLastname,
-        email: formData.signupEmail,
-        password: formData.signupPassword,
+        email: formData.UserEmail,
+        phoneNumber: formData.UserPhoneNumber,
+        motivation: formData.UserMotivation,
+        jobId: id,
       };
+      
 
       // Effectuer une requête Axios pour poster les données
       axios
-        .post("http://localhost:3000/api/users/newUser", data)
+        .post("http://localhost:3000/api/apply/newJobApply", data)
         .then((response) => {
-          console.log("Données enregistrées avec succès :", response.data);
+            console.log("Candidature enregistrée avec succès, ID de l'annonce attribué par le serveur :", response.data);
         })
         .catch((error) => {
           if (error.response) {
@@ -59,16 +55,17 @@ const SignUP = () => {
           }
         });
     }
-  };
+
+
 
   return (
     <div className="box2">
       <div className="forms form__login" style={{ width: "450px" }}>
-        <h2>Sign up</h2>
+        <h2>Apply</h2>
 
         <form
           className="form2"
-          id="signupForm"
+          id="applyForm"
           style={{ height: "400px" }}
           onSubmit={handleSubmit}
         >
@@ -100,69 +97,58 @@ const SignUP = () => {
             <input
               type="email"
               className="signup__email log__email--reg input-style"
-              placeholder="Email Address"
+              placeholder="Email"
               onChange={handleChange}
               required
-              id="signupEmail"
-              name="signupEmail"
+              id="UserEmail"
+              name="UserEmail"
             />
             <ion-icon className="i" name="mail-outline"></ion-icon>
           </div>
           <div className="log__pass log__box">
             <input
-              type="password"
+              type="tel"
               className="signup__pass input-style"
-              placeholder="Password"
-              required
-              id="signupPassword"
-              name="signupPassword"
+              placeholder="Phone number"
               onChange={handleChange}
+              required
+              id="UserPhoneNumber"
+              name="UserPhoneNumber"
             />
-            <ion-icon className="i" name="lock-closed-outline"></ion-icon>
+            <ion-icon className="i" name="call-outline"></ion-icon>
           </div>
-          <div className="log__pass log__box">
+          {/* <div className="log__pass log__box">
             <input
-              type="password"
+              type="file"
               className="signup__confirm log__confirm--reg input-style"
-              placeholder="Confirm Password"
-              required
-              id="signupConfirmPassword"
-              name="signupConfirmPassword"
+              accept=".pdf, .doc, .docx"
               onChange={handleChange}
+              required
+              name="cv"
             />
-            {/* <ion-icon className="i" name="lock-closed-outline"></ion-icon>
-            <ion-icon
-              className="eye showHide"
-              name="eye-off-outline"
-            ></ion-icon> */}
-          </div>
-          {passwordError && (
-            <div
-              className="error-message"
-              style={{ color: "red", fontSize: "12px" }}
-            >
-              {passwordError}
-            </div>
-          )}
-
-          <div className="log__remember log__box">
-            <input type="checkbox" className="log__accept--input" id="terms" />
-            <label htmlFor="log--accept" style={{ color: "black" }}>
-              {" "}
-              <strong>I Accept the terms & conditions</strong>
-            </label>
+            <ion-icon className="i" name="document-attach-outline"></ion-icon>
+          </div> */}
+          <div className="log__pass log__box">
+            <textarea
+              className="signup__confirm log__confirm--reg input-style"
+              placeholder="Motivation"
+              onChange={handleChange}
+              required
+              id="UserMotivation"
+              name="UserMotivation"
+            />
+            <ion-icon className="i" name="document-text-outline"></ion-icon>
           </div>
 
-          <button className="reg-btn" type="submit" id="signupBtn">
-            Register Now
+          <button className="reg-btn" type="submit" id="applyBtn">
+            Postuler
           </button>
 
           <div className="form__text">
             <p style={{ width: "300px" }}>
-              {" "}
-              <strong>already have an Account ?</strong>
+              <strong>Vous avez déjà un compte ? </strong>
             </p>
-            <Link to="/login">
+            <Link to="/jobs/login">
               <a className="form__login--link">
                 <strong>Login Now</strong>
               </a>
@@ -172,6 +158,6 @@ const SignUP = () => {
       </div>
     </div>
   );
-};
 
-export default SignUP;
+};
+export default Apply;
