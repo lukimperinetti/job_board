@@ -63,7 +63,7 @@ header a {
 .authBtn,
 .commencerBtt,
 .overlay__btn {
-  box-shadow: 3px 4px 0px 0px #899599;
+  /* box-shadow: 3px 4px 0px 0px #899599; */
   background-color: transparent;
   border-radius: 15px;
   border: 1px solid #f0f0f0;
@@ -82,7 +82,7 @@ header a {
 }
 .commencerBtt {
   font-size: 30px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 .overlay__btn {
   color: #010101;
@@ -411,6 +411,8 @@ a {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 24px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .footer-custom:after {

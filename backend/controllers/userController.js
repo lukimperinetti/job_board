@@ -91,6 +91,7 @@ const deleteUser = async (req, res) => {
 
   res.status(200).json({ message: "User deleted successfully" });
 };
+
 const login = async (req, res) => {
   const { email, password } = req.body;
 

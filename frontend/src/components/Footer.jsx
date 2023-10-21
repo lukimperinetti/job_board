@@ -4,10 +4,10 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-gray">
-        <div className="footer-custom">
-          <div className="footer-lists">
+        <div className="footer-custom" style={{marginLeft: "300px", width:"2048px"}}>
+          <div className="footer-lists" style={{width: "1000px"}}>
             <div className="footer-list-wrap">
-              <h6 className="ftr-hdr">Nos offres à l'internationales</h6>
+              <h6 className="ftr-hdr">Nos offres <br /> à l'internationales</h6>
               <ul className="ftr-links-sub">
                 <li>
                   <a href="#" rel="nofollow">
@@ -83,26 +83,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="footer-email">
-            <h6 className="ftr-hdr">
-              Soyez notifié des dernières offres d'emplois !
-            </h6>
-            <div id="ftr-email" className="ftr-email-form">
-              <form id="ftrEmailForm" method="post" action="#">
-                <div className="error">Entreez un email valide</div>
-                <input
-                  type="text"
-                  name="email_address_"
-                  id="ftrEmailInput"
-                  className="input"
-                  placeholder="Enter votre Email"
-                />
-                <input type="submit" className="button" value="Envoyer" />
-              </form>
-            </div>
-            <div className="ftr-email-privacy-policy"></div>
-          </div>
-          <div className="footer-legal">
+          <div className="footer-legal" style={{marginLeft: "220px"}}>
             <p>
               &copy; M&L.com Inc. Tout droits réservés. |{" "}
               <a href="#" rel="nofollow">
