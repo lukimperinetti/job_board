@@ -24,6 +24,11 @@ const UserProfile = () => {
     }
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
+
   if (!userData) {
     return <div>Chargement en cours...</div>;
   }
@@ -52,6 +57,23 @@ const UserProfile = () => {
           </p>
           <button className="overlay__btn">
             <span>Modifier</span>
+          </button>
+          {userData.flag === 2 && (
+            <a href={`/dashboard?flag=2&id=${userData._id}`}>
+              <button className="overlay__btn">
+                <span>AdminBoard</span>
+              </button>
+            </a>
+          )}
+          {userData.flag === 1 && (
+            <a href={`/profil/createad?flag=1&id=${userData._id}`}>
+              <button className="overlay__btn">
+                <span>Ajouter une annonce</span>
+              </button>
+            </a>
+          )}
+          <button className="overlay__btn" onClick={handleLogout}>
+            <span>Déconnexion</span>
           </button>
         </div>
       </div>

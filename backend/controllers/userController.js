@@ -30,11 +30,9 @@ const createUser = async (req, res) => {
   const { firstname, lastname, address, email, password, cv, flag } = req.body;
 
   try {
-    // Vérifiez si un utilisateur avec la même adresse e-mail existe déjà
     const existingUser = await user.findOne({ email });
 
     if (existingUser) {
-      // Si un utilisateur avec la même adresse e-mail existe, renvoyez une erreur
       return res.status(400).json({ error: "Cet e-mail est déjà utilisé." });
     }
 
@@ -63,17 +61,33 @@ const updateUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "User does not exist" });
   }
-  const user = await userModel.findOneAndUpdate(
-    { _id: id },
-    {
-      ...req.body, // spread operator : copy all the properties of req.body to the findOneAndUpdate object.
+
+  // Assuming you have the user's new password in req.body.password
+  const { password, ...rest } = req.body;
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    const user = await userModel.findOneAndUpdate(
+      { _id: id },
+      {
+        password: hashedPassword,
+        ...rest,
+      },
+      { new: true } // This option returns the updated user
+    );
+
+    if (!user) {
+      return res.status(404).json({ error: "User does not exist" });
     }
-  );
-  if (!user) {
-    return res.status(404).json({ error: "User does not exist" });
+
+    res.status(200).json({ message: "User updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
   }
-  res.status(200).json({ message: "User updated successfully" });
 };
+
 
 // delete a User
 const deleteUser = async (req, res) => {
