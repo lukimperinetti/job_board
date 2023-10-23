@@ -8,7 +8,7 @@ const Navbar = () => {
     <header>
       <div className="container">
         <Link to="/" className="logo">
-          <img src={LogoML} alt="logo" className="logoMl" />
+          <img src={LogoML} alt="logo" className="logoMl rotating" />
         </Link>
 
         {token ? (

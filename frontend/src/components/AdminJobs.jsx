@@ -64,13 +64,14 @@ const AdminJobs = () => {
   };
 
   return (
-    <div className="table_annonce">
+    <div className="table_annonce" >
       <h2>Table Annonce : {jobs && jobs.length}</h2>
       {error && <p>Une erreur est survenue : {error.message}</p>}
       {jobs && (
-        <table>
+        <div>
+        <table style={{backgroundColor: "#05002b", borderRadius: "35px"}}>
           <thead>
-            <tr>
+            <tr >
               <th>ID</th>
               <th>Titre</th>
               <th>Déscription</th>
@@ -91,7 +92,7 @@ const AdminJobs = () => {
                 <td>{job.Contract}</td>
                 <td>{job.Localisation}</td>
                 <td>{job.Booster}</td>
-                <td>
+                <td style={{width: "170px"}}>
                   <button
                     className="btn-modifier"
                     onClick={() => handlePatch(job)}
@@ -100,6 +101,7 @@ const AdminJobs = () => {
                   </button>
                   <button
                     className="btn-supprimer"
+                    style={{backgroundColor: "red"}}
                     onClick={() => handleDelete(job._id)}
                   >
                     Supprimer
@@ -109,6 +111,7 @@ const AdminJobs = () => {
             ))}
           </tbody>
         </table>
+        </div>
       )}
       {editJobs && (
         <div className="modal">

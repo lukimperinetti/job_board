@@ -67,7 +67,7 @@ const AdminApply = () => {
       <h2>Table Postulée : {applys && applys.length} </h2>
       {error && <p>Une erreur est survenue : {error.message}</p>}
       {applys && (
-        <table>
+        <table style={{backgroundColor: "#05002b", borderRadius: "35px"}}>
           <thead>
             <tr>
               <th>ID</th>
@@ -214,7 +214,7 @@ const AdminApply = () => {
           padding: 8px;
         }
         th {
-          background-color: #4caf50;
+          background-color: #8892b3;
           color: white;
         }
         tr:nth-child(even) {
@@ -225,7 +225,7 @@ const AdminApply = () => {
           color: white;
           border: none;
           padding: 5px 10px;
-          border-radius: 5px;
+          border-radius: 50px;
           margin-right: 5px;
         }
         .btn-supprimer {
@@ -233,7 +233,10 @@ const AdminApply = () => {
           color: white;
           border: none;
           padding: 5px 10px;
-          border-radius: 5px;
+          border-radius: 50px;
+        }
+        h2{
+          color: black;
         }
       `}</style>
     </div>

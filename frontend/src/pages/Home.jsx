@@ -13,12 +13,12 @@ const Home = () => {
         opacity: 1,
       }}
     >
-      <h1 className="bigtitle">Trouvez exactement ce que vous cherchez</h1>
-      <p className="intro">
+      <h1 className="bigtitle" style={{animation: "translateLeft 3s ease-in-out"}}>Trouvez exactement ce que vous cherchez</h1>
+      <p className="intro" style={{animation: "translateLeft 3s ease-in-out", fontSize: "15px"}}>
         Nous sommes là pour vous fournir la plus haute qualité de service
       </p>
       <Link to="/jobs">
-        <button className="commencerBtt">Commencer</button>
+        <button className="commencerBtt" style={{animation: "translateLeft 3s ease-in-out"}}>Commencer</button>
       </Link>
     </div>
   );

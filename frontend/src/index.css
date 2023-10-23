@@ -62,7 +62,8 @@ header a {
 .contactezNousBtt,
 .authBtn,
 .commencerBtt,
-.overlay__btn {
+.overlay__btn,
+.CreateAdButt {
   /* box-shadow: 3px 4px 0px 0px #899599; */
   background-color: transparent;
   border-radius: 15px;
@@ -80,6 +81,9 @@ header a {
 .authBtn {
   margin-right: 40px;
 }
+.CreateAdButt{
+  width: 150px;
+}
 .commencerBtt {
   font-size: 30px;
   margin-bottom: 80px;
@@ -91,7 +95,8 @@ header a {
 .contactezNousBtt:hover,
 .authBtn:hover,
 .commencerBtt:hover,
-.overlay__btn:hover {
+.overlay__btn:hover,
+.CreateAdButt:hover {
   background-color: transparent;
   transform: scale(1.05);
   cursor: pointer;
@@ -99,7 +104,8 @@ header a {
 .contactezNousBtt:active,
 .authBtn:active,
 .commencerBtt:active,
-.overlay__btn:active {
+.overlay__btn:active,
+.CreateAdButt:active {
   position: relative;
   top: 1px;
 }
@@ -109,17 +115,23 @@ header a {
   height: 200px;
   width: 200px;
 }
+.logoMl.rotating {
+  animation: rotateLogo 10s linear forwards; 
+  transition: transform 0.3s ease-in-out; 
+}
+
 /* selected ads */
 .course {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
+  display:flex;
   max-width: 100%;
   margin: 20px;
   width: 700px;
   transition: 0.4s ease all;
   overflow: hidden;
+  
 }
 
 .course:hover {
@@ -340,7 +352,6 @@ a {
   margin-left: 170px;
 }
 
-/* Not too many browser support this yet but it's good to add! */
 @media (prefers-contrast: high) {
   .orb-canvas {
     display: none;
@@ -846,6 +857,7 @@ fieldset {
   margin: 0;
   box-sizing: border-box;
 }
+
 html {
   font-size: 62.5%;
   --darkBlue: rgb(59, 52, 163);
@@ -1046,3 +1058,63 @@ input::placeholder {
   opacity: 0.5;
   color: rgb(3, 2, 2);
 }
+/* dashboard */
+/* .dashboard {
+  display: flex;
+  flex-direction: row;
+} */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.admin-content {
+  flex: 1;
+}
+/* .CreateAdButt {
+  display: inline-block;
+  background-color: #91bff1;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.CreateAdButt:hover {
+  background-color: #7db4ef;
+} */
+/* table{
+  background-color: #16013d;
+} */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes rotateLogo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes translateLeft {
+  0% {
+    transform: translateX(-1500px);
+  }
+  100% {
+    transform: translateX(0px); 
+  }
+}
+

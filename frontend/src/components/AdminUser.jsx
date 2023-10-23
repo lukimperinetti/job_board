@@ -67,7 +67,7 @@ const AdminUser = () => {
       <h2>Table Utilisateurs : {users && users.length} </h2>
       {error && <p>Une erreur est survenue : {error.message}</p>}
       {users && (
-        <table>
+        <table  style={{backgroundColor: "#05002b", borderRadius: "35px"}}>
           <thead>
             <tr>
               <th>ID</th>

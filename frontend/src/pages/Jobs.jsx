@@ -38,14 +38,18 @@ const Jobs = () => {
       return jobDate <= twoHoursAgo;
     });
   return (
-    <div className="Jobs">
-      <h1>Annonces récentes :</h1>
+
+  
+    <><h1 style={{marginLeft: "600px"}}>Annonces récentes :</h1>
+    <div className="Jobs" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
       {jobsFiltered &&
         jobsFiltered.map((job) => <JobsDetails key={job._id} job={job} />)}
-      <h1>Annonces à venir :</h1>
+    </div>
+      <h1 style={{marginLeft: "600px"}}>Annonces à venir :</h1>
+      <div className="Jobs" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
       {jobsFilteredPlus &&
         jobsFilteredPlus.map((job) => <JobsDetails key={job._id} job={job} />)}
-    </div>
+    </div></>
   );
 };
 

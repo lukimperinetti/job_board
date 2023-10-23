@@ -61,17 +61,17 @@ const FormCreateAd = () => {
 
   return (
     <div className="containerFormAd">
-      <form id="contact" onSubmit={handleSubmit}>
-        <h3>Créez une annonce</h3>
+      <form id="contact" onSubmit={handleSubmit} style={{backgroundColor: "transparent"}}>
+        <h3 style={{color: "black", fontSize: "30px", fontWeight: "600"}}>Créez une annonce</h3>
         <fieldset>
-          <label for="jobTitle" className="adFormTxt">
+          <label for="jobTitle" className="adFormTxt" style={{ display: "block" }}>
             Titre
           </label>
           <input
             type="text"
             id="jobTitle"
             name="jobTitle"
-            placeholder="Titre du poste"
+            // placeholder="Titre du poste"
             required
             autoFocus
             maxLength="40"
@@ -86,7 +86,7 @@ const FormCreateAd = () => {
           <textarea
             id="jobDescription"
             name="jobDescription"
-            placeholder="Description du poste"
+            // placeholder="Description du poste"
             required
             value={formData.jobDescription}
             onChange={handleChange}
@@ -100,7 +100,7 @@ const FormCreateAd = () => {
             type="text"
             id="jobSalary"
             name="jobSalary"
-            placeholder="Salaires (en euros)"
+            // placeholder="Salaires (en euros)"
             required
             pattern="[0-9]+"
             value={formData.jobSalary}
@@ -146,7 +146,7 @@ const FormCreateAd = () => {
             type="text"
             id="jobLocation"
             name="jobLocation"
-            placeholder="Localisation du poste"
+            // placeholder="Localisation du poste"
             required
             value={formData.jobLocation}
             onChange={handleChange}
